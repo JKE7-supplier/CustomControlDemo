@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="#f2f2f2">
+    android:background="#f2f2f2"
+    tools:context=".MainActivity">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/preview_banner"
@@ -16,25 +16,5 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="BottomAppBar" />
-
-    <com.example.demo.combination_widget.HomePreviewBannerView
-        android:id="@+id/home_preview_banner_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/preview_banner" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:spanCount="1"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintLeft_toLeftOf="@+id/home_preview_banner_view"
-        app:layout_constraintRight_toRightOf="@+id/home_preview_banner_view"
-        app:layout_constraintTop_toBottomOf="@+id/home_preview_banner_view"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

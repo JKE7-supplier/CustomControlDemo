@@ -2,7 +2,6 @@ package com.example.demo.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.example.demo.R
 import com.example.demo.combination_widget.HomePreviewBannerView
@@ -27,7 +26,6 @@ class PreviewBannerActivity : AppCompatActivity() {
 
     private var homePreviewBannerView: HomePreviewBannerView? = null
     private var homePageViewPageAdapter: HomePageViewPageAdapter? = null
-    private var recyclerView: RecyclerView? = null
     private var homePreviewRecyclerViewAdapter: HomePreviewRecyclerViewAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,14 +77,13 @@ class PreviewBannerActivity : AppCompatActivity() {
             homePreviewRecyclerViewAdapter?.setModels(getData())
             homePreviewBannerView?.recyclerView?.adapter = homePreviewRecyclerViewAdapter
         }
-        recyclerView = findViewById(R.id.recyclerView)
+
         homePreviewBannerView?.post {
             val homePreviewRecyclerViewAdapter =
                 HomePreviewRecyclerViewAdapter(
                     homePreviewBannerView!!.measuredWidth, 10
                 )
             homePreviewRecyclerViewAdapter.setModels(getData())
-            recyclerView?.adapter = homePreviewRecyclerViewAdapter
         }
     }
 
