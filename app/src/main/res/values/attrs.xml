@@ -1,0 +1,32 @@
+<resources>
+    <!-- CircleImageView Style -->
+    <declare-styleable name="CircleImageView">
+        <attr name="mTileX" />
+        <attr name="mTileY" />
+        <attr name="createBorder" format="boolean" />
+        <attr name="mBorderColor" format="color" />
+        <attr name="mBorderWidth" format="dimension" />
+        <attr name="mShapeType" />
+        <attr name="mRoundRadius" format="dimension" />
+    </declare-styleable>
+    <attr name="mShapeType">
+        <enum name="rounded_rect" value="1" />
+        <enum name="circle" value="2" />
+    </attr>
+    <attr name="mTileX">
+        <enum name="clamp" value="0" />
+        <enum name="mirror" value="1" />
+        <enum name="repeat" value="2" />
+    </attr>
+    <attr name="mTileY">
+        <enum name="clamp" value="0" />
+        <enum name="mirror" value="1" />
+        <enum name="repeat" value="2" />
+    </attr>
+
+    <declare-styleable name="BlurryView">
+        <attr name="blurry_radius" format="dimension"/> <!--模糊半径（模糊程度）-->
+        <attr name="blurry_color"  format="color" />  <!--覆盖颜色-->
+        <attr name="blurry_factor" format="float"/>
+    </declare-styleable>
+</resources>
