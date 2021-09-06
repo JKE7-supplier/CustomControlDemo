@@ -1,5 +1,5 @@
 /* (c) Disney. All rights reserved. */
-package com.example.video_image_banner;
+package com.example.demo.widget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -22,6 +22,7 @@ import androidx.annotation.Nullable;
 
 
 /**
+ * 支持圆形/圆角/变框线的ImageView
  * Created by Jack Ke on 2021/8/27
  */
 @SuppressLint("AppCompatCustomView")

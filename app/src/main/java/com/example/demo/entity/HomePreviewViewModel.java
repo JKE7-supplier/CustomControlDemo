@@ -1,5 +1,5 @@
 /* (c) Disney. All rights reserved. */
-package com.example.video_image_banner;
+package com.example.demo.entity;
 
 import java.util.Objects;
 

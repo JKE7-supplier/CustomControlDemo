@@ -1,5 +1,5 @@
 /* (c) Disney. All rights reserved. */
-package com.example.video_image_banner;
+package com.example.demo.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -12,20 +12,21 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 /**
+ * 带圆角的ConstraintLayout
  * Created by Jack Ke on 2021/8/30
  */
-public class RoundedConstraintLayout extends ConstraintLayout {
-    private float round;
+public class RoundedConstraintLayoutView extends ConstraintLayout {
+    private float round; //圆角弧度
 
-    public RoundedConstraintLayout(Context context) {
+    public RoundedConstraintLayoutView(Context context) {
         super(context);
     }
 
-    public RoundedConstraintLayout(Context context, @Nullable @org.jetbrains.annotations.Nullable AttributeSet attrs) {
+    public RoundedConstraintLayoutView(Context context, @Nullable @org.jetbrains.annotations.Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public RoundedConstraintLayout(Context context, @Nullable @org.jetbrains.annotations.Nullable AttributeSet attrs, int defStyleAttr) {
+    public RoundedConstraintLayoutView(Context context, @Nullable @org.jetbrains.annotations.Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

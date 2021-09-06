@@ -1,5 +1,5 @@
 /* (c) Disney. All rights reserved. */
-package com.example.video_image_banner;
+package com.example.demo.widget;
 
 import android.app.Activity;
 import android.content.Context;
@@ -19,7 +19,10 @@ import android.view.ViewTreeObserver;
 
 import androidx.annotation.Nullable;
 
+import com.example.demo.R;
+
 /**
+ * 朦板View ，可以设置模糊程度，盖在别的view上可以有马赛克的效果、模糊效果
  * Created by Jack Ke on 2021/9/2
  */
 public class BlurryView extends View {

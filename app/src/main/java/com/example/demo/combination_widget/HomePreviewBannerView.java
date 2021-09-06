@@ -1,5 +1,5 @@
 /* (c) Disney. All rights reserved. */
-package com.example.video_image_banner;
+package com.example.demo.combination_widget;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -17,6 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.demo.R;
+import com.example.demo.widget.RoundedConstraintLayoutView;
+
 import java.util.ArrayList;
 
 /**
@@ -28,7 +31,7 @@ public class HomePreviewBannerView extends LinearLayout {
     private TextView titleTextView;
     private TextView subTitleTextview;
     private ViewPager viewPage;
-    private RoundedConstraintLayout roundedConstraintLayout;
+    private RoundedConstraintLayoutView roundedConstraintLayoutView;
     private LinearLayout indicatorLinearLayout;
     private ArrayList<TextView> mTextViews;
     private RecyclerView recyclerView;
@@ -50,7 +53,7 @@ public class HomePreviewBannerView extends LinearLayout {
 
     private void init(Context context) {
         LayoutInflater.from(context).inflate(R.layout.home_preview_banner_layout, this);
-        roundedConstraintLayout = findViewById(R.id.rounded_constraint_layout);
+        roundedConstraintLayoutView = findViewById(R.id.rounded_constraint_layout);
         viewPage = findViewById(R.id.view_page);
         titleTextView = findViewById(R.id.title_textview);
         subTitleTextview = findViewById(R.id.sub_title_textview);
@@ -59,7 +62,7 @@ public class HomePreviewBannerView extends LinearLayout {
     }
 
     public ConstraintLayout getPreviewConstraintLayout() {
-        return roundedConstraintLayout;
+        return roundedConstraintLayoutView;
     }
 
     public RecyclerView getRecyclerView() {
@@ -72,8 +75,8 @@ public class HomePreviewBannerView extends LinearLayout {
     }
 
     public void setRound(float round) {
-        if (roundedConstraintLayout != null)
-            roundedConstraintLayout.setRound(round);
+        if (roundedConstraintLayoutView != null)
+            roundedConstraintLayoutView.setRound(round);
     }
 
     public ViewPager getViewPage() {

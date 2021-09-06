@@ -1,14 +1,20 @@
-package com.example.video_image_banner;
+package com.example.demo;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.demo.combination_widget.HomePreviewBannerView;
+import com.example.demo.entity.HomePreviewViewModel;
+import com.example.demo.preview_banner_adapter.HomePageViewPageAdapter;
+import com.example.demo.preview_banner_adapter.HomePreviewRecyclerViewAdapter;
+import com.example.demo.ui.PreviewBannerActivity;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
             "https://img2.baidu.com/it/u=1854160273,3804635891&fm=26&fmt=auto&gp=0.jpg"
     };
 
-    private CountDownTimer countDownTimer;
     private RecyclerView recyclerView;
     private HomePreviewRecyclerViewAdapter homePreviewRecyclerViewAdapter;
 
@@ -43,15 +48,13 @@ public class MainActivity extends AppCompatActivity {
 
         initHomePageView();
         initRecyclerView();
+
+        findViewById(R.id.preview_banner).setOnClickListener(view -> startActivity(new Intent(MainActivity.this, PreviewBannerActivity.class)));
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (countDownTimer != null) {
-            countDownTimer.onFinish();
-            countDownTimer.cancel();
-        }
     }
 
     private void initHomePageView() {
@@ -84,15 +87,6 @@ public class MainActivity extends AppCompatActivity {
             homePreviewRecyclerViewAdapter = new HomePreviewRecyclerViewAdapter(measuredWidth, 10);
             homePreviewRecyclerViewAdapter.setModels(getData());
             homePreviewBannerView.getRecyclerView().setAdapter(homePreviewRecyclerViewAdapter);
-            homePreviewRecyclerViewAdapter.setOnItemClickListener(position -> {
-//                ArrayList<HomePreviewViewModel> lists = getData();
-//                for (int i = 0; i < lists.size(); i++) {
-//                    HomePreviewViewModel homePreviewViewModel = lists.get(i);
-//                    homePreviewViewModel.setSelected(i == position);
-//                    lists.add(homePreviewViewModel);
-//                }
-//                homePreviewRecyclerViewAdapter.notifyItemChanged(position);
-            });
         });
 
         recyclerView = findViewById(R.id.recyclerView);
@@ -102,24 +96,6 @@ public class MainActivity extends AppCompatActivity {
             recyclerView.setAdapter(homePreviewRecyclerViewAdapter);
         });
     }
-
-//    private void startCountDownTimer() {
-////
-//        countDownTimer = new CountDownTimer(getData().size() * 1000, 3000) {
-//            @Override
-//            public void onTick(long millisUntilFinished) {
-//                int currentItemPosition = (homePreviewBannerView.getViewPage().getCurrentItem() % getData().size()) + 1;
-//                homePreviewBannerView.getViewPage().setCurrentItem(currentItemPosition);
-//                homePreviewBannerView.setRecyclerViewSmoothScrollToPosition(currentItemPosition);
-//            }
-//
-//            @Override
-//            public void onFinish() {
-//                this.start();
-//                countDownTimer.onTick(getData().size() * 1000);
-//            }
-//        }.start();
-//    }
 
     private ArrayList<HomePreviewViewModel> getData() {
         ArrayList<HomePreviewViewModel> lists = new ArrayList<>();

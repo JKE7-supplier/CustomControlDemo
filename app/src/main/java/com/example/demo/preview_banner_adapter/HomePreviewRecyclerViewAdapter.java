@@ -1,5 +1,5 @@
 /* (c) Disney. All rights reserved. */
-package com.example.video_image_banner;
+package com.example.demo.preview_banner_adapter;
 
 import android.annotation.SuppressLint;
 import android.view.View;
@@ -10,6 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.demo.entity.HomePreviewViewModel;
+import com.example.demo.R;
+import com.example.demo.widget.CircleImageView;
 
 import java.util.List;
 

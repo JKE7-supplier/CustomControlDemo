@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.example.video_image_banner.RoundedConstraintLayout
+    <com.example.demo.widget.RoundedConstraintLayoutView
         android:id="@+id/rounded_constraint_layout"
         android:layout_width="0dp"
         android:layout_height="280dp"
@@ -22,7 +22,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.example.video_image_banner.BlurryView
+        <com.example.demo.widget.BlurryView
             android:id="@+id/frosted_glass_image_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -73,7 +73,7 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.72" />
 
-    </com.example.video_image_banner.RoundedConstraintLayout>
+    </com.example.demo.widget.RoundedConstraintLayoutView>
 
     <LinearLayout
         android:id="@+id/indicator_linear_layout"

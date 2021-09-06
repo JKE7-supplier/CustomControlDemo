@@ -1,5 +1,5 @@
 /* (c) Disney. All rights reserved. */
-package com.example.video_image_banner;
+package com.example.demo.widget;
 
 import android.content.Context;
 import android.media.MediaMetadataRetriever;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.VideoView;
 
 /**
+ * 自定义视频控件，实现让视频内容布满整个控件 达到fix_ll效果
  * Created by Jack Ke on 2021/8/26
  */
 public class FillParentVideoView extends VideoView {

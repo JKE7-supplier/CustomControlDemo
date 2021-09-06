@@ -1,4 +1,4 @@
-package com.example.video_image_banner;
+package com.example.demo;
 
 import org.junit.Test;
 

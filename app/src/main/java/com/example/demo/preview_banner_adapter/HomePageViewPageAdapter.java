@@ -1,5 +1,5 @@
 /* (c) Disney. All rights reserved. */
-package com.example.video_image_banner;
+package com.example.demo.preview_banner_adapter;
 
 import android.net.Uri;
 import android.view.View;
@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
+import com.example.demo.entity.HomePreviewViewModel;
+import com.example.demo.widget.FillParentVideoView;
 
 import java.util.List;
 
