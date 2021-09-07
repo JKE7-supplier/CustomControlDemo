@@ -43,6 +43,10 @@
         <activity
             android:name=".ui.PreviewBannerActivity"
             android:screenOrientation="fullSensor" />
+
+        <activity
+            android:name=".ui.DashBoardActivity"
+            android:screenOrientation="fullSensor" />
     </application>
 
 </manifest>
