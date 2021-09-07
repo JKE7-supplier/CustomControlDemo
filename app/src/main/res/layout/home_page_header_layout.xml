@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="216dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/headerImageView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_launcher_background" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/leftIconImageView"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/leftTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintLeft_toLeftOf="@+id/leftIconImageView"
+        app:layout_constraintRight_toRightOf="@+id/leftIconImageView"
+        app:layout_constraintTop_toBottomOf="@+id/leftIconImageView"
+        tools:text="Inbox" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/rightIconImageView"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="20dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintBottom_toBottomOf="@+id/leftIconImageView"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/leftIconImageView" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/rightTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintLeft_toLeftOf="@+id/rightIconImageView"
+        app:layout_constraintRight_toRightOf="@+id/rightIconImageView"
+        app:layout_constraintTop_toBottomOf="@+id/rightIconImageView"
+        tools:text="Shopping" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/headerTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintLeft_toRightOf="@+id/leftIconImageView"
+        app:layout_constraintRight_toLeftOf="@+id/rightIconImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="I'm greeting text" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
