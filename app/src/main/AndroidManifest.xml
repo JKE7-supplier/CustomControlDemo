@@ -47,6 +47,10 @@
         <activity
             android:name=".ui.DashBoardActivity"
             android:screenOrientation="fullSensor" />
+
+        <activity
+            android:name=".ui.ViewPage2DemoActivity"
+            android:screenOrientation="fullSensor" />
     </application>
 
 </manifest>
