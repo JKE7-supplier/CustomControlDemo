@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.demo.R
 import com.example.demo.adapter.DashBoardEntranceAdapter
+import com.example.demo.combination_widget.HomePageHeaderView
 import com.example.demo.tools.DashBoardRecyclerSpaceDecoration
 import com.example.demo.tools.DashBoardScrollBarDecoration
 import java.util.*
@@ -16,13 +17,30 @@ import java.util.*
  */
 class DashBoardActivity : AppCompatActivity() {
 
+    private lateinit var headerView: HomePageHeaderView
     private lateinit var dashBoardEntranceAdapter: DashBoardEntranceAdapter
     private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dash_board_activity)
+        headerView = findViewById(R.id.headerView)
         recyclerView = findViewById(R.id.recycler_view)
+
+        initHeaderView()
+        initRecyclerView()
+    }
+
+    private fun initHeaderView() {
+        headerView.setBackgroundImageUrl("https://static-le.shanghaidisneyresort.com/109dd807ac5d37d1/media/9d5138bab2639a08/homepageheader.png")
+        headerView.getLeftIconImageView().setImageResource(R.mipmap.ic_launcher)
+        headerView.getLeftTitleTextView().text = "left"
+        headerView.getRightIconImageView().setImageResource(R.mipmap.ic_launcher)
+        headerView.getRightTitleTextView().text = "right"
+        headerView.getHeaderTitleTextView().text = "title"
+    }
+
+    private fun initRecyclerView() {
         dashBoardEntranceAdapter = DashBoardEntranceAdapter(getCategoryNameList())
         recyclerView.addItemDecoration(DashBoardScrollBarDecoration())
         recyclerView.addItemDecoration(DashBoardRecyclerSpaceDecoration(29f, 10f))
