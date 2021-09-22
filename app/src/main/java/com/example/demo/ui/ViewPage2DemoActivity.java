@@ -8,11 +8,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.demo.R;
+import com.example.demo.adapter.AutoSwitchedViewPagerAdapter;
 import com.example.demo.adapter.ViewPage2DemoAdapter;
 import com.example.demo.widget.RoundedConstraintLayoutView;
 import com.example.demo.widget.banner.Banner;
 import com.example.demo.widget.banner.IndicatorView;
 import com.example.demo.widget.banner.ScaleInTransformer;
+import com.example.demo.widget.viewpage2.AutoSwitchedViewPager;
+import com.example.demo.widget.viewpage2.GalleryTransformer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,7 +35,7 @@ public class ViewPage2DemoActivity extends AppCompatActivity {
             "https://img2.baidu.com/it/u=1854160273,3804635891&fm=26&fmt=auto&gp=0.jpg"};
     private RoundedConstraintLayoutView roundedConstraintLayout;
     private ViewPage2DemoAdapter viewPage2DemoAdapter;
-    private Banner bottomBanner;
+    private AutoSwitchedViewPager banner;
     private Banner bottomBanner1;
 
     @Override
@@ -41,53 +44,15 @@ public class ViewPage2DemoActivity extends AppCompatActivity {
         setContentView(R.layout.view_page2_demo_activity);
         viewPage2 = findViewById(R.id.viewPage2);
         roundedConstraintLayout = findViewById(R.id.roundedConstraintLayout);
-        bottomBanner = findViewById(R.id.bottomBanner);
-        bottomBanner1 = findViewById(R.id.bottomBanner1);
+        banner = findViewById(R.id.banner);
+        bottomBanner1 = findViewById(R.id.banner1);
 
         viewPage2DemoAdapter = new ViewPage2DemoAdapter();
         viewPage2DemoAdapter.setModels(getImages());
 
         initView();
-
+        initSegmentBannerView();
         initBottomBanner();
-    }
-
-    private void initBottomBanner() {
-        bottomBanner.setAutoPlay(true)
-                .setOrientation(ViewPager2.ORIENTATION_HORIZONTAL)
-                .setPagerScrollDuration(800)
-                .setRoundCorners(20f)
-                .setOuterPageChangeListener(new ViewPager2.OnPageChangeCallback() {
-                    @Override
-                    public void onPageSelected(int position) {
-                        System.out.println("base---bottomBanner--------onPageSelected---------->position: " + position);
-                    }
-                })
-                .setAdapter(viewPage2DemoAdapter);
-
-        final IndicatorView indicatorView = new IndicatorView(this)
-                .setIndicatorRatio(1f)
-                .setIndicatorRadius(2f)
-                .setIndicatorSelectedRatio(3)
-                .setIndicatorSelectedRadius(2f)
-                .setIndicatorStyle(IndicatorView.IndicatorStyle.INDICATOR_CIRCLE)
-                .setIndicatorColor(Color.GRAY)
-                .setIndicatorSelectorColor(Color.WHITE);
-
-        bottomBanner1.setAutoPlay(true)
-                .setIndicator(indicatorView)
-                .setOrientation(ViewPager2.ORIENTATION_HORIZONTAL)
-                .setPagerScrollDuration(800)
-                .setRoundCorners(20f)
-                .setPageMargin(40, 0)
-                .addPageTransformer(new ScaleInTransformer())
-                .setOuterPageChangeListener(new ViewPager2.OnPageChangeCallback() {
-                    @Override
-                    public void onPageSelected(int position) {
-                        System.out.println("base---bottomBanner1--------onPageSelected---------->position: " + position);
-                    }
-                })
-                .setAdapter(viewPage2DemoAdapter);
     }
 
     private void initView() {
@@ -121,6 +86,44 @@ public class ViewPage2DemoActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void initSegmentBannerView() {
+        banner.setLifecycleRegistry(getLifecycle())
+                .setViewPagerHeightAspectRatio(0.33f)
+                .setAutoPlay(true)
+                .setCanLoop(true)
+                .setCanShowIndicator(true)
+                .setInterval(3000)
+                .setRound(20);
+        banner.setAdapter(new AutoSwitchedViewPagerAdapter());
+        banner.create(getImages());
+    }
+
+    private void initBottomBanner() {
+        final IndicatorView indicatorView = new IndicatorView(this)
+                .setIndicatorRatio(1f)
+                .setIndicatorRadius(2f)
+                .setIndicatorSelectedRatio(3)
+                .setIndicatorSelectedRadius(2f)
+                .setIndicatorStyle(IndicatorView.IndicatorStyle.INDICATOR_CIRCLE)
+                .setIndicatorColor(Color.GRAY)
+                .setIndicatorSelectorColor(Color.WHITE);
+
+        bottomBanner1.setAutoPlay(true)
+                .setIndicator(indicatorView)
+                .setOrientation(ViewPager2.ORIENTATION_HORIZONTAL)
+                .setPagerScrollDuration(800)
+                .setRoundCorners(20f)
+                .setPageMargin(40, 0)
+                .addPageTransformer(new ScaleInTransformer())
+                .setOuterPageChangeListener(new ViewPager2.OnPageChangeCallback() {
+                    @Override
+                    public void onPageSelected(int position) {
+                        System.out.println("base---bottomBanner1--------onPageSelected---------->position: " + position);
+                    }
+                })
+                .setAdapter(viewPage2DemoAdapter);
     }
 
     private List<String> getImages() {
