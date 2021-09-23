@@ -2,9 +2,7 @@
 package com.example.demo.tools
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
+import android.graphics.*
 import androidx.recyclerview.widget.RecyclerView
 
 /**
@@ -24,10 +22,11 @@ class DashBoardScrollBarDecoration : RecyclerView.ItemDecoration() {
 
         val paint = Paint()
         paint.isAntiAlias = true
-        paint.color = Color.parseColor("#79B6FF")
+        paint.color = Color.parseColor("#DEEBFF")
         paint.strokeCap = Paint.Cap.ROUND
         paint.strokeWidth = barHeight.toFloat()
         c.drawLine(barX, barY, barX + scrollWidth.toFloat(), barY, paint)
+
 
         val extent = parent.computeHorizontalScrollExtent()
         val range = parent.computeHorizontalScrollRange()
@@ -38,10 +37,14 @@ class DashBoardScrollBarDecoration : RecyclerView.ItemDecoration() {
             val proportion = offset / maxEndX
             val scrollableDistance = scrollWidth - indicatorWidth
             val offsetX = scrollableDistance * proportion
-            paint.color = Color.parseColor("#6296FF")
+//            paint.color = Color.parseColor("#6296FF")
+            val shader:Shader = LinearGradient(barX + offsetX, barY, barX + indicatorWidth.toFloat() + offsetX, barY,  Color.parseColor("#79B6FF"), Color.parseColor("#6296FF"),Shader.TileMode.CLAMP)
+            paint.shader = shader
             c.drawLine(barX + offsetX, barY, barX + indicatorWidth.toFloat() + offsetX, barY, paint)
         } else {
-            paint.color = Color.parseColor("#6296FF")
+//            paint.color = Color.parseColor("#6296FF")
+            val shader:Shader = LinearGradient(barX, barY, barX + scrollWidth.toFloat(), barY,  Color.parseColor("#79B6FF"), Color.parseColor("#6296FF"),Shader.TileMode.CLAMP)
+            paint.shader = shader
             c.drawLine(barX, barY, barX + scrollWidth.toFloat(), barY, paint)
         }
     }
