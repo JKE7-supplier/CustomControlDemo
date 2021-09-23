@@ -6,7 +6,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.demo.R
-import com.example.demo.widget.viewpage2.BaseAutoSwitchedViewPagerAdapter
+import com.example.demo.widget.banner.BaseAutoSwitchedViewPagerAdapter
 
 class AutoSwitchedViewPagerAdapter<T> : BaseAutoSwitchedViewPagerAdapter<T, AutoSwitchedViewPagerAdapter.ViewHolder>() {
 

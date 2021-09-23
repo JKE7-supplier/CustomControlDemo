@@ -131,7 +131,7 @@ public class HomePreviewBannerView extends LinearLayout {
             if (i == 0) {
                 textView.setBackgroundResource(R.drawable.preview_banenr_dot_selected);
             } else {
-                textView.setBackgroundResource(R.drawable.preview_banenr_dot_noraml);
+                textView.setBackgroundResource(R.drawable.preview_banenr_dot_normal);
             }
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dip2px(15), dip2px(5));
             params.setMargins(dip2px(3), dip2px(10), dip2px(3), dip2px(10));
@@ -148,7 +148,7 @@ public class HomePreviewBannerView extends LinearLayout {
                 if (position == i) {
                     mTextViews.get(i).setBackgroundResource(R.drawable.preview_banenr_dot_selected);
                 } else {
-                    mTextViews.get(i).setBackgroundResource(R.drawable.preview_banenr_dot_noraml);
+                    mTextViews.get(i).setBackgroundResource(R.drawable.preview_banenr_dot_normal);
                 }
             }
         }
