@@ -25,7 +25,7 @@
     </com.example.demo.widget.RoundedConstraintLayoutView>
 
     <LinearLayout
-        android:id="@+id/bvp_layout_indicator"
+        android:id="@+id/indicatorLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

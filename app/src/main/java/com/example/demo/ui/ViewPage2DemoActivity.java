@@ -14,8 +14,8 @@ import com.example.demo.widget.RoundedConstraintLayoutView;
 import com.example.demo.widget.banner.Banner;
 import com.example.demo.widget.banner.IndicatorView;
 import com.example.demo.widget.banner.ScaleInTransformer;
-import com.example.demo.widget.viewpage2.AutoSwitchedViewPager;
 import com.example.demo.widget.viewpage2.GalleryTransformer;
+import com.example.demo.widget.viewpage2.SegmentAutoSwitchedViewPage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,7 +35,7 @@ public class ViewPage2DemoActivity extends AppCompatActivity {
             "https://img2.baidu.com/it/u=1854160273,3804635891&fm=26&fmt=auto&gp=0.jpg"};
     private RoundedConstraintLayoutView roundedConstraintLayout;
     private ViewPage2DemoAdapter viewPage2DemoAdapter;
-    private AutoSwitchedViewPager banner;
+    private SegmentAutoSwitchedViewPage baseAutoSwitchedBanner;
     private Banner bottomBanner1;
 
     @Override
@@ -44,7 +44,7 @@ public class ViewPage2DemoActivity extends AppCompatActivity {
         setContentView(R.layout.view_page2_demo_activity);
         viewPage2 = findViewById(R.id.viewPage2);
         roundedConstraintLayout = findViewById(R.id.roundedConstraintLayout);
-        banner = findViewById(R.id.banner);
+        baseAutoSwitchedBanner = findViewById(R.id.banner);
         bottomBanner1 = findViewById(R.id.banner1);
 
         viewPage2DemoAdapter = new ViewPage2DemoAdapter();
@@ -89,15 +89,18 @@ public class ViewPage2DemoActivity extends AppCompatActivity {
     }
 
     private void initSegmentBannerView() {
-        banner.setLifecycleRegistry(getLifecycle())
+        baseAutoSwitchedBanner
+                .setRound(20)
                 .setViewPagerHeightAspectRatio(0.33f)
+                .setLifecycleRegistry(getLifecycle())
+//                .setPageTransformer(new GalleryTransformer())
+                .setPageTransformer(new ScaleInTransformer())
                 .setAutoPlay(true)
                 .setCanLoop(true)
                 .setCanShowIndicator(true)
                 .setInterval(3000)
-                .setRound(20);
-        banner.setAdapter(new AutoSwitchedViewPagerAdapter());
-        banner.create(getImages());
+                .setViewPageAdapter(new AutoSwitchedViewPagerAdapter())
+                .create(getImages());
     }
 
     private void initBottomBanner() {

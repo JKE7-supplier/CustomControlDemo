@@ -23,15 +23,6 @@
 
     </com.example.demo.widget.RoundedConstraintLayoutView>
 
-    <com.example.demo.widget.viewpage2.AutoSwitchedViewPager
-        android:id="@+id/banner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/roundedConstraintLayout" />
-
     <com.example.demo.widget.banner.Banner
         android:id="@+id/banner1"
         android:layout_width="match_parent"
@@ -39,6 +30,17 @@
         android:layout_margin="30dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/banner" />
+        app:layout_constraintTop_toBottomOf="@+id/roundedConstraintLayout" />
+
+    <com.example.demo.widget.viewpage2.SegmentAutoSwitchedViewPage
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/banner1" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

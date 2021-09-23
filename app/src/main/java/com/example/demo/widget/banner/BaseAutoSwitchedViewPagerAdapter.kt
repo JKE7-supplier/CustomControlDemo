@@ -1,18 +1,12 @@
-package com.example.demo.widget.viewpage2
+package com.example.demo.widget.banner
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-/**
- * @ Author : 廖健鹏
- * @ Date : 2021/7/27
- * @ e-mail : 329524627@qq.com
- * @ Description :[BannerViewPager] 轮播控件所需的 BaseAdapter
- */
 abstract class BaseAutoSwitchedViewPagerAdapter<T, VH : RecyclerView.ViewHolder> : RecyclerView.Adapter<VH>() {
-    protected var mList: MutableList<T> = mutableListOf()
+    var mList: MutableList<T> = mutableListOf()
     var isCanLoop = false
     var pageClickListener: OnPageClickListener? = null
 
@@ -64,7 +58,8 @@ abstract class BaseAutoSwitchedViewPagerAdapter<T, VH : RecyclerView.ViewHolder>
     }
 
     protected abstract fun onBind(holder: VH, data: T, position: Int, pageSize: Int)
-    abstract fun createViewHolder(parent: ViewGroup, itemView: View, viewType: Int): VH
-    abstract fun getLayoutId(viewType: Int): Int
 
+    abstract fun createViewHolder(parent: ViewGroup, itemView: View, viewType: Int): VH
+
+    abstract fun getLayoutId(viewType: Int): Int
 }

@@ -21,7 +21,7 @@ class HomePageSegmentBannerView : ConstraintLayout {
     lateinit var indicatorLinearLayout: LinearLayout
     private lateinit var roundedConstraintLayoutView: RoundedConstraintLayoutView
 
-    private var normalImage = R.drawable.preview_banenr_dot_noraml//正常指示器图片
+    private var normalImage = R.drawable.preview_banenr_dot_normal//正常指示器图片
     private var checkedImage = R.drawable.preview_banenr_dot_selected//选中指示器图片
 
     private val mContext: Context = context
