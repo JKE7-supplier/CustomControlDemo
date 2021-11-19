@@ -51,6 +51,10 @@
         <activity
             android:name=".ui.ViewPage2DemoActivity"
             android:screenOrientation="fullSensor" />
+
+        <activity
+            android:name=".ui.ImageViewActivity"
+            android:screenOrientation="fullSensor" />
     </application>
 
 </manifest>

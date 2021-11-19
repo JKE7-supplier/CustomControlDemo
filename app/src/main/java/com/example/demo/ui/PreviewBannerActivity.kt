@@ -17,7 +17,7 @@ class PreviewBannerActivity : AppCompatActivity() {
 
     private val strings = arrayOf(
         "https://img2.baidu.com/it/u=985113219,1494482408&fm=26&fmt=auto&gp=0.jpg",
-        "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4",
+//        "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4",
         "https://img0.baidu.com/it/u=4152011503,3905925573&fm=26&fmt=auto&gp=0.jpg",
         "https://img0.baidu.com/it/u=3660568416,600673464&fm=26&fmt=auto&gp=0.jpg",
         "https://img1.baidu.com/it/u=2714088317,436321673&fm=26&fmt=auto&gp=0.jpg",
@@ -92,6 +92,9 @@ class PreviewBannerActivity : AppCompatActivity() {
         for (i in strings.indices) {
             val homePreviewViewModel = HomePreviewViewModel()
             homePreviewViewModel.url = strings[i]
+            if (i == 0) {
+                homePreviewViewModel.isSelected = true
+            }
             lists.add(homePreviewViewModel)
         }
         return lists

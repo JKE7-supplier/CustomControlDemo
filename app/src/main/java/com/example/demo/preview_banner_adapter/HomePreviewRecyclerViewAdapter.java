@@ -2,6 +2,7 @@
 package com.example.demo.preview_banner_adapter;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -10,9 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.demo.entity.HomePreviewViewModel;
 import com.example.demo.R;
-import com.example.demo.widget.CircleImageView;
+import com.example.demo.entity.HomePreviewViewModel;
+import com.example.demo.widget.RoundedCornerWithBorderImageView;
 
 import java.util.List;
 
@@ -26,10 +27,16 @@ public class HomePreviewRecyclerViewAdapter extends RecyclerView.Adapter<HomePre
     private int parentLayoutWidth;
     private int itemSpacing;
     private OnItemClickListener onItemClickListener;
+    private int selectIndex;
 
     public HomePreviewRecyclerViewAdapter(int parentLayoutWidth, int itemSpacing) {
         this.parentLayoutWidth = parentLayoutWidth;
         this.itemSpacing = itemSpacing;
+    }
+
+    private void setSelectIndex(int position) {
+        this.selectIndex = position;
+        notifyDataSetChanged();
     }
 
     public void setModels(List<HomePreviewViewModel> models) {
@@ -41,14 +48,14 @@ public class HomePreviewRecyclerViewAdapter extends RecyclerView.Adapter<HomePre
     @Override
     public void onBindViewHolder(@NonNull HomePreviewViewHolder holder, int position) {
         HomePreviewViewModel homePreviewViewModel = models.get(position);
-        if (holder.itemView instanceof CircleImageView && homePreviewViewModel != null) {
-            CircleImageView circleImageView = (CircleImageView) holder.itemView;
+        if (holder.itemView instanceof RoundedCornerWithBorderImageView && homePreviewViewModel != null) {
+            RoundedCornerWithBorderImageView circleImageView = (RoundedCornerWithBorderImageView) holder.itemView;
             circleImageView.setOnClickListener(view -> {
                 if (onItemClickListener != null) {
                     onItemClickListener.onClick(position);
                 }
             });
-            circleImageView.setCreateBorder(homePreviewViewModel.isSelected());
+            circleImageView.setBorderColor(position == 0 ? Color.WHITE : Color.TRANSPARENT);
             Glide.with(circleImageView.getContext())
                     .load(homePreviewViewModel.getUrl())
                     .into(circleImageView)
@@ -58,7 +65,7 @@ public class HomePreviewRecyclerViewAdapter extends RecyclerView.Adapter<HomePre
 
     @Override
     public HomePreviewViewHolder onCreateViewHolder(@NonNull ViewGroup container, int viewType) {
-        CircleImageView imageView = new CircleImageView(container.getContext());
+        RoundedCornerWithBorderImageView imageView = new RoundedCornerWithBorderImageView(container.getContext());
         if (parentLayoutWidth > 0) {
             int itemWidth = (int) (parentLayoutWidth / AVERAGE_NUMBER) - itemSpacing * 2;
             int itemHeight = (int) ((int) itemWidth * 0.75);
