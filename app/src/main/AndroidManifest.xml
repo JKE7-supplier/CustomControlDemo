@@ -55,6 +55,11 @@
         <activity
             android:name=".ui.ImageViewActivity"
             android:screenOrientation="fullSensor" />
+
+        <activity
+            android:name=".ui.FlexboxDemoActivity"
+            android:screenOrientation="fullSensor" />
+
     </application>
 
 </manifest>
