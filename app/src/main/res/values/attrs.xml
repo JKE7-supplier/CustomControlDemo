@@ -56,4 +56,10 @@
             <enum name="circle" value="0"/>
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="MyGridLayout">
+        <attr name="numColumns" format="integer" />
+        <attr name="itemMargin" format="integer" />
+    </declare-styleable>
+
 </resources>
