@@ -60,6 +60,9 @@
             android:name=".ui.FlexboxDemoActivity"
             android:screenOrientation="fullSensor" />
 
+        <activity android:name=".ui.TextFlowLayoutDemo"
+            android:screenOrientation="fullSensor" />
+
     </application>
 
 </manifest>

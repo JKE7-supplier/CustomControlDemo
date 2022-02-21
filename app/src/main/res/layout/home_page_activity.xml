@@ -57,5 +57,15 @@
         app:layout_constraintTop_toBottomOf="@+id/view_page3_button"
         tools:ignore="BottomAppBar" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_5"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:text="Text Flow 文本流式布局"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_page3_button"
+        tools:ignore="BottomAppBar" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
