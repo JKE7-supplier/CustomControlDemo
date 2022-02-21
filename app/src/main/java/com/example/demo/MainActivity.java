@@ -9,6 +9,7 @@ import com.example.demo.ui.DashBoardActivity;
 import com.example.demo.ui.FlexboxDemoActivity;
 import com.example.demo.ui.ImageViewActivity;
 import com.example.demo.ui.PreviewBannerActivity;
+import com.example.demo.ui.TextFlowLayoutDemo;
 import com.example.demo.ui.ViewPage2DemoActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,5 +24,6 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.view_page2_button).setOnClickListener(view -> startActivity(new Intent(MainActivity.this, ViewPage2DemoActivity.class)));
         findViewById(R.id.view_page3_button).setOnClickListener(view -> startActivity(new Intent(MainActivity.this, ImageViewActivity.class)));
         findViewById(R.id.button_4).setOnClickListener(view -> startActivity(new Intent(MainActivity.this, FlexboxDemoActivity.class)));
+        findViewById(R.id.button_5).setOnClickListener(view -> startActivity(new Intent(MainActivity.this, TextFlowLayoutDemo.class)));
     }
 }
