@@ -10,6 +10,7 @@ import com.example.demo.ui.FlexboxDemoActivity;
 import com.example.demo.ui.ImageViewActivity;
 import com.example.demo.ui.PreviewBannerActivity;
 import com.example.demo.ui.TextFlowLayoutDemo;
+import com.example.demo.ui.ZoomImageViewDemo;
 import com.example.demo.ui.ViewPage2DemoActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,5 +26,6 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.view_page3_button).setOnClickListener(view -> startActivity(new Intent(MainActivity.this, ImageViewActivity.class)));
         findViewById(R.id.button_4).setOnClickListener(view -> startActivity(new Intent(MainActivity.this, FlexboxDemoActivity.class)));
         findViewById(R.id.button_5).setOnClickListener(view -> startActivity(new Intent(MainActivity.this, TextFlowLayoutDemo.class)));
+        findViewById(R.id.button_6).setOnClickListener(view -> startActivity(new Intent(MainActivity.this, ZoomImageViewDemo.class)));
     }
 }

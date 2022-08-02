@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.demo.R
-import com.example.demo.widget.RoundedCornerWithBorderImageView
+import com.example.demo.widget.RoundedCornerImageView
 
 /**
  * Created by Jack Ke on 2021/11/18
@@ -17,9 +17,9 @@ class ImageViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image_view)
-        val imageView = findViewById<RoundedCornerWithBorderImageView>(R.id.roundImageView)
-        val imageView1 = findViewById<RoundedCornerWithBorderImageView>(R.id.roundImageView1)
-        val imageView2 = findViewById<RoundedCornerWithBorderImageView>(R.id.roundImageView2)
+        val imageView = findViewById<RoundedCornerImageView>(R.id.roundImageView)
+        val imageView1 = findViewById<RoundedCornerImageView>(R.id.roundImageView1)
+        val imageView2 = findViewById<RoundedCornerImageView>(R.id.roundImageView2)
 
         imageView.setType(1)
             .setCornerRadius(8)

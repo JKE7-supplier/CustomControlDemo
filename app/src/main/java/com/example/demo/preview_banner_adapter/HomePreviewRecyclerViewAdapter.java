@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.demo.R;
 import com.example.demo.entity.HomePreviewViewModel;
-import com.example.demo.widget.RoundedCornerWithBorderImageView;
+import com.example.demo.widget.RoundedCornerImageView;
 
 import java.util.List;
 
@@ -48,8 +48,8 @@ public class HomePreviewRecyclerViewAdapter extends RecyclerView.Adapter<HomePre
     @Override
     public void onBindViewHolder(@NonNull HomePreviewViewHolder holder, int position) {
         HomePreviewViewModel homePreviewViewModel = models.get(position);
-        if (holder.itemView instanceof RoundedCornerWithBorderImageView && homePreviewViewModel != null) {
-            RoundedCornerWithBorderImageView circleImageView = (RoundedCornerWithBorderImageView) holder.itemView;
+        if (holder.itemView instanceof RoundedCornerImageView && homePreviewViewModel != null) {
+            RoundedCornerImageView circleImageView = (RoundedCornerImageView) holder.itemView;
             circleImageView.setOnClickListener(view -> {
                 if (onItemClickListener != null) {
                     onItemClickListener.onClick(position);
@@ -65,7 +65,7 @@ public class HomePreviewRecyclerViewAdapter extends RecyclerView.Adapter<HomePre
 
     @Override
     public HomePreviewViewHolder onCreateViewHolder(@NonNull ViewGroup container, int viewType) {
-        RoundedCornerWithBorderImageView imageView = new RoundedCornerWithBorderImageView(container.getContext());
+        RoundedCornerImageView imageView = new RoundedCornerImageView(container.getContext());
         if (parentLayoutWidth > 0) {
             int itemWidth = (int) (parentLayoutWidth / AVERAGE_NUMBER) - itemSpacing * 2;
             int itemHeight = (int) ((int) itemWidth * 0.75);

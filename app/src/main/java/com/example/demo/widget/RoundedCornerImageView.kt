@@ -1,6 +1,5 @@
 package com.example.demo.widget
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
@@ -15,11 +14,11 @@ import com.example.demo.R
  * 支持圆形/圆角/变框线的ImageView
  * Created by Jack Ke on 2021/11/19
  */
-class RoundedCornerWithBorderImageView : AppCompatImageView {
+class RoundedCornerImageView : AppCompatImageView {
 
-    val imageTypeCircle = 0
-    val imageTypeRound = 1
-    val imageTypeOval = 2
+    private val imageTypeCircle = 0
+    private val imageTypeRound = 1
+    private val imageTypeOval = 2
 
     private var leftTopCornerRadius: Float = 0f
     private var rightTopCornerRadius: Float = 0f
@@ -27,7 +26,7 @@ class RoundedCornerWithBorderImageView : AppCompatImageView {
     private var rightBottomCornerRadius: Float = 0f
     private var roundRadius: Float = 0f
     private var borderWidth: Float = dp2px(2).toFloat()
-    private var cornerRadius: Float = dp2px(8).toFloat()
+    private var cornerRadius: Float =0f
 
     private var progressColor: Int = Color.TRANSPARENT
     private var borderColor: Int = Color.TRANSPARENT
@@ -45,20 +44,24 @@ class RoundedCornerWithBorderImageView : AppCompatImageView {
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
 
-    @SuppressLint("CustomViewStyleable")
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.RoundedCornerWithBorderImageViewStyle, defStyleAttr, 0)
-        imageViewType = typedArray.getInt(R.styleable.RoundedCornerWithBorderImageViewStyle_imageViewStyle, imageTypeRound)
-        borderColor = typedArray.getColor(R.styleable.RoundedCornerWithBorderImageViewStyle_border_color, Color.TRANSPARENT)
-        borderWidth = typedArray.getDimension(R.styleable.RoundedCornerWithBorderImageViewStyle_border_width, dp2px(4).toFloat())
-        cornerRadius = typedArray.getDimension(R.styleable.RoundedCornerWithBorderImageViewStyle_corner_radius, dp2px(8).toFloat())
-        leftTopCornerRadius = typedArray.getDimension(R.styleable.RoundedCornerWithBorderImageViewStyle_leftTop_corner_radius, 0f)
-        leftBottomCornerRadius = typedArray.getDimension(R.styleable.RoundedCornerWithBorderImageViewStyle_leftBottom_corner_radius, 0f)
-        rightTopCornerRadius = typedArray.getDimension(R.styleable.RoundedCornerWithBorderImageViewStyle_rightTop_corner_radius, 0f)
-        rightBottomCornerRadius = typedArray.getDimension(R.styleable.RoundedCornerWithBorderImageViewStyle_rightBottom_corner_radius, 0f)
-        progressColor = typedArray.getColor(R.styleable.RoundedCornerWithBorderImageViewStyle_progress_color, Color.WHITE)
-        borderProgress = typedArray.getInteger(R.styleable.RoundedCornerWithBorderImageViewStyle_progress_border, 0)
-        typedArray.recycle()
+        initView(attrs)
+    }
+
+    private fun initView(attributeSet: AttributeSet?){
+        context.obtainStyledAttributes(attributeSet, R.styleable.RoundedCornerImageView).apply {
+            imageViewType = getInt(R.styleable.RoundedCornerImageView_imageViewStyle, imageTypeRound)
+            borderColor = getColor(R.styleable.RoundedCornerImageView_border_color, Color.TRANSPARENT)
+            borderWidth = getDimension(R.styleable.RoundedCornerImageView_border_width, dp2px(4).toFloat())
+            cornerRadius = getDimension(R.styleable.RoundedCornerImageView_corner_radius, dp2px(2).toFloat())
+            leftTopCornerRadius = getDimension(R.styleable.RoundedCornerImageView_leftTop_corner_radius, 0f)
+            leftBottomCornerRadius = getDimension(R.styleable.RoundedCornerImageView_leftBottom_corner_radius, 0f)
+            rightTopCornerRadius = getDimension(R.styleable.RoundedCornerImageView_rightTop_corner_radius, 0f)
+            rightBottomCornerRadius = getDimension(R.styleable.RoundedCornerImageView_rightBottom_corner_radius, 0f)
+            progressColor = getColor(R.styleable.RoundedCornerImageView_progress_color, Color.WHITE)
+            borderProgress = getInteger(R.styleable.RoundedCornerImageView_progress_border, 0)
+            recycle()
+        }
     }
 
     private fun initPaint() {
@@ -94,9 +97,7 @@ class RoundedCornerWithBorderImageView : AppCompatImageView {
     }
 
     override fun onDraw(canvas: Canvas) {
-        if (drawable == null) {
-            return
-        }
+        if (drawable == null) return
         initPaint()
         setUpShader()
         when (imageViewType) {
@@ -109,7 +110,6 @@ class RoundedCornerWithBorderImageView : AppCompatImageView {
             imageTypeCircle -> {
                 canvas.drawCircle(roundRadius + getHalfBorderWidth(), roundRadius + getHalfBorderWidth(), roundRadius, bitmapPaint)
                 canvas.drawCircle(roundRadius + getHalfBorderWidth(), roundRadius + getHalfBorderWidth(), roundRadius, borderPaint)
-                //进度
                 borderPaint.color = progressColor
                 val rect = RectF(getHalfBorderWidth(), getHalfBorderWidth(), roundRadius * 2 + getHalfBorderWidth(), roundRadius * 2 + getHalfBorderWidth())
                 canvas.drawArc(rect, -90f, borderProgress.toFloat(), false, borderPaint)
@@ -196,7 +196,7 @@ class RoundedCornerWithBorderImageView : AppCompatImageView {
 
     private fun dp2px(dpVal: Int): Int = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpVal.toFloat(), resources.displayMetrics).toInt()
 
-    fun setType(imageType: Int): RoundedCornerWithBorderImageView {
+    fun setType(imageType: Int): RoundedCornerImageView {
         if (imageViewType != imageType) {
             imageViewType = imageType
             if (imageViewType != imageTypeRound && imageViewType != imageTypeCircle && imageViewType != imageTypeOval) {
@@ -207,8 +207,7 @@ class RoundedCornerWithBorderImageView : AppCompatImageView {
         return this
     }
 
-
-    fun setCornerRadius(cornerRadius: Int): RoundedCornerWithBorderImageView {
+    fun setCornerRadius(cornerRadius: Int): RoundedCornerImageView {
         if (this.cornerRadius != dp2px(cornerRadius).toFloat()) {
             this.cornerRadius = dp2px(cornerRadius).toFloat()
             invalidate()
@@ -216,7 +215,7 @@ class RoundedCornerWithBorderImageView : AppCompatImageView {
         return this
     }
 
-    fun setLeftTopCornerRadius(cornerRadius: Int): RoundedCornerWithBorderImageView {
+    fun setLeftTopCornerRadius(cornerRadius: Int): RoundedCornerImageView {
         if (leftTopCornerRadius != dp2px(cornerRadius).toFloat()) {
             leftTopCornerRadius = dp2px(cornerRadius).toFloat()
             invalidate()
@@ -224,7 +223,7 @@ class RoundedCornerWithBorderImageView : AppCompatImageView {
         return this
     }
 
-    fun setRightTopCornerRadius(cornerRadius: Int): RoundedCornerWithBorderImageView {
+    fun setRightTopCornerRadius(cornerRadius: Int): RoundedCornerImageView {
         if (rightTopCornerRadius != dp2px(cornerRadius).toFloat()) {
             rightTopCornerRadius = dp2px(cornerRadius).toFloat()
             invalidate()
@@ -232,7 +231,7 @@ class RoundedCornerWithBorderImageView : AppCompatImageView {
         return this
     }
 
-    fun setLeftBottomCornerRadius(cornerRadius: Int): RoundedCornerWithBorderImageView {
+    fun setLeftBottomCornerRadius(cornerRadius: Int): RoundedCornerImageView {
         if (leftBottomCornerRadius != dp2px(cornerRadius).toFloat()) {
             leftBottomCornerRadius = dp2px(cornerRadius).toFloat()
             invalidate()
@@ -240,7 +239,7 @@ class RoundedCornerWithBorderImageView : AppCompatImageView {
         return this
     }
 
-    fun setRightBottomCornerRadius(cornerRadius: Int): RoundedCornerWithBorderImageView {
+    fun setRightBottomCornerRadius(cornerRadius: Int): RoundedCornerImageView {
         if (rightBottomCornerRadius != dp2px(cornerRadius).toFloat()) {
             rightBottomCornerRadius = dp2px(cornerRadius).toFloat()
             invalidate()
@@ -248,7 +247,7 @@ class RoundedCornerWithBorderImageView : AppCompatImageView {
         return this
     }
 
-    fun setBorderWidth(borderWidth: Int): RoundedCornerWithBorderImageView {
+    fun setBorderWidth(borderWidth: Int): RoundedCornerImageView {
         if (this.borderWidth != dp2px(borderWidth).toFloat()) {
             this.borderWidth = dp2px(borderWidth).toFloat()
             invalidate()
@@ -256,7 +255,7 @@ class RoundedCornerWithBorderImageView : AppCompatImageView {
         return this
     }
 
-    fun setBorderColor(borderColor: Int): RoundedCornerWithBorderImageView {
+    fun setBorderColor(borderColor: Int): RoundedCornerImageView {
         if (this.borderColor != borderColor) {
             this.borderColor = borderColor
             invalidate()

@@ -30,7 +30,7 @@
         <attr name="blurry_factor" format="float"/>
     </declare-styleable>
 
-    <declare-styleable name="RoundedCornerWithBorderImageViewStyle">
+    <declare-styleable name="RoundedCornerImageView">
         <!-- 描边宽度-->
         <attr name="border_width" format="dimension"/>
         <!-- 描边颜色-->
