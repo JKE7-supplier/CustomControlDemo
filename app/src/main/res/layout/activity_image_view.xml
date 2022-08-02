@@ -6,7 +6,7 @@
     android:padding="10dp"
     android:background="@color/purple_200">
 
-    <com.example.demo.widget.RoundedCornerWithBorderImageView
+    <com.example.demo.widget.RoundedCornerImageView
         android:id="@+id/roundImageView"
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -16,7 +16,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.demo.widget.RoundedCornerWithBorderImageView
+    <com.example.demo.widget.RoundedCornerImageView
         android:id="@+id/roundImageView1"
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -27,7 +27,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/roundImageView" />
 
-    <com.example.demo.widget.RoundedCornerWithBorderImageView
+    <com.example.demo.widget.RoundedCornerImageView
         android:id="@+id/roundImageView2"
         android:layout_width="80dp"
         android:layout_height="80dp"
