@@ -71,7 +71,17 @@
         android:id="@+id/button_6"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:text="top bar 吸顶效果 布局"
+        android:text="图片缩放"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_5"
+        tools:ignore="BottomAppBar" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_7"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:text="MVVM、MVI架构运用"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_5"
