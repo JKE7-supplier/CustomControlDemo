@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.demo.ui.DashBoardActivity;
 import com.example.demo.ui.FlexboxDemoActivity;
 import com.example.demo.ui.ImageViewActivity;
+import com.example.demo.ui.MVVMActivity;
 import com.example.demo.ui.PreviewBannerActivity;
 import com.example.demo.ui.TextFlowLayoutDemo;
 import com.example.demo.ui.ZoomImageViewDemo;
@@ -27,5 +28,6 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button_4).setOnClickListener(view -> startActivity(new Intent(MainActivity.this, FlexboxDemoActivity.class)));
         findViewById(R.id.button_5).setOnClickListener(view -> startActivity(new Intent(MainActivity.this, TextFlowLayoutDemo.class)));
         findViewById(R.id.button_6).setOnClickListener(view -> startActivity(new Intent(MainActivity.this, ZoomImageViewDemo.class)));
+        findViewById(R.id.button_7).setOnClickListener(view -> startActivity(new Intent(MainActivity.this, MVVMActivity.class)));
     }
 }

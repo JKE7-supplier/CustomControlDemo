@@ -67,6 +67,14 @@
         <activity
             android:name=".ui.ZoomImageViewDemo"
             android:screenOrientation="fullSensor" />
+
+        <activity
+            android:name=".ui.MVVMActivity"
+            android:screenOrientation="fullSensor" />
+
+        <activity
+            android:name=".ui.MVIActivity"
+            android:screenOrientation="fullSensor" />
     </application>
 
 </manifest>
