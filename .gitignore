@@ -1,15 +1,18 @@
+# Gradle files
+.gradle/
+build/
+
+# Android Studio files
+local.properties
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+.idea/
+
+# Mac OS X clutter
+*.DS_Store
 .DS_Store
+
+.gradle
 /build
 /captures
 .externalNativeBuild
 .cxx
-local.properties
