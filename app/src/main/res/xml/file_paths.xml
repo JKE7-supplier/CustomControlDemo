@@ -2,4 +2,6 @@
 <paths>
     <external-files-path name="opensdk_external" path="Images/tmp"/>
     <root-path name="opensdk_root" path=""/>
+    <!-- res/xml/file_paths.xml -->
+    <files-path name="pdf" path="pdf/" />
 </paths>

@@ -47,6 +47,9 @@ dependencies {
 
     //微博分享
     implementation 'io.github.sinaweibosdk:core:13.10.4@aar'
+    //pdf 加载库
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
 
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
