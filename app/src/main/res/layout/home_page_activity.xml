@@ -84,7 +84,27 @@
         android:text="MVVM、MVI架构运用"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_5"
+        app:layout_constraintTop_toBottomOf="@+id/button_6"
+        tools:ignore="BottomAppBar" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_8"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:text="分享sdk"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_7"
+        tools:ignore="BottomAppBar" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_9"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:text="加载pdf"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_8"
         tools:ignore="BottomAppBar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
