@@ -1,6 +1,5 @@
 package com.example.demo.ui.view_model
 
-import androidx.databinding.ObservableField
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LiveData

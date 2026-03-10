@@ -16,12 +16,12 @@ import java.util.*
 class PreviewBannerActivity : AppCompatActivity() {
 
     private val strings = arrayOf(
-        "https://img2.baidu.com/it/u=985113219,1494482408&fm=26&fmt=auto&gp=0.jpg",
+        "https://static-le.shanghaidisneyresort.com/0fbd235203c7e6be/media/d98a5dd264513ff1/DPA-bg.png",
 //        "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4",
-        "https://img0.baidu.com/it/u=4152011503,3905925573&fm=26&fmt=auto&gp=0.jpg",
-        "https://img0.baidu.com/it/u=3660568416,600673464&fm=26&fmt=auto&gp=0.jpg",
-        "https://img1.baidu.com/it/u=2714088317,436321673&fm=26&fmt=auto&gp=0.jpg",
-        "https://img2.baidu.com/it/u=1854160273,3804635891&fm=26&fmt=auto&gp=0.jpg"
+        "https://static-le.shanghaidisneyresort.com/0fbd235203c7e6be/media/d98a5dd264513ff1/DPA-bg.png",
+        "https://static-le.shanghaidisneyresort.com/0fbd235203c7e6be/media/d98a5dd264513ff1/DPA-bg.png",
+        "https://static-le.shanghaidisneyresort.com/0fbd235203c7e6be/media/d98a5dd264513ff1/DPA-bg.png",
+        "https://static-le.shanghaidisneyresort.com/0fbd235203c7e6be/media/d98a5dd264513ff1/DPA-bg.png"
     )
 
     private var homePreviewBannerView: HomePreviewBannerView? = null

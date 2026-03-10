@@ -27,12 +27,10 @@ import java.util.List;
 public class ViewPage2DemoActivity extends AppCompatActivity {
     private ViewPager2 viewPage2;
     private String[] strings = {
-            "https://img2.baidu.com/it/u=985113219,1494482408&fm=26&fmt=auto&gp=0.jpg",
             "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4",
-            "https://img0.baidu.com/it/u=4152011503,3905925573&fm=26&fmt=auto&gp=0.jpg",
-            "https://img0.baidu.com/it/u=3660568416,600673464&fm=26&fmt=auto&gp=0.jpg",
-            "https://img1.baidu.com/it/u=2714088317,436321673&fm=26&fmt=auto&gp=0.jpg",
-            "https://img2.baidu.com/it/u=1854160273,3804635891&fm=26&fmt=auto&gp=0.jpg"};
+            "https://img2.baidu.com/it/u=530751778,4135316347&fm=253&fmt=auto&app=138&f=PNG?w=796&h=500",
+            "https://static-le.shanghaidisneyresort.com/0fbd235203c7e6be/media/d98a5dd264513ff1/DPA-bg.png",
+            "https://img2.baidu.com/it/u=530751778,4135316347&fm=253&fmt=auto&app=138&f=PNG?w=796&h=500"};
     private RoundedConstraintLayoutView roundedConstraintLayout;
     private ViewPage2DemoAdapter viewPage2DemoAdapter;
     private SegmentAutoSwitchedViewPage baseAutoSwitchedBanner;
