@@ -131,6 +131,7 @@
             android:name=".ui.MVIActivity"
             android:screenOrientation="fullSensor" />
         <activity android:name=".ui.SharedActivity" />
+        <activity android:name=".ui.WorkerManagerActivity" />
     </application>
 
 </manifest>

@@ -14,6 +14,7 @@ import com.example.demo.ui.PreviewBannerActivity;
 import com.example.demo.ui.SharedActivity;
 import com.example.demo.ui.TextFlowLayoutDemo;
 import com.example.demo.ui.ViewPage2DemoActivity;
+import com.example.demo.ui.WorkerManagerActivity;
 import com.example.demo.ui.ZoomImageViewDemo;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button_7).setOnClickListener(view -> startActivity(new Intent(MainActivity.this, MVVMActivity.class)));
         findViewById(R.id.button_8).setOnClickListener(view -> startActivity(new Intent(MainActivity.this, SharedActivity.class)));
         findViewById(R.id.button_9).setOnClickListener(view -> startActivity(new Intent(MainActivity.this, MVIActivity.class)));
+        findViewById(R.id.button_10).setOnClickListener(view -> startActivity(new Intent(MainActivity.this, WorkerManagerActivity.class)));
     }
 
 //    @Override

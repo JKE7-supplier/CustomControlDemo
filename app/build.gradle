@@ -49,6 +49,8 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    // Kotlin + coroutines
+    implementation "androidx.work:work-runtime-ktx:2.11.1"
     //微博分享
     implementation 'io.github.sinaweibosdk:core:13.10.8@aar'
     //pdf 加载库
