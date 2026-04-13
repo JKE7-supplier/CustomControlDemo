@@ -7,18 +7,18 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.os.Environment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.example.demo.R
 import com.tencent.connect.share.QQShare
+import com.tencent.connect.share.QzonePublish
+import com.tencent.connect.share.QzonePublish.PUBLISH_TO_QZONE_TYPE_PUBLISHMOOD
 import com.tencent.connect.share.QzoneShare
 import com.tencent.tauth.IUiListener
 import com.tencent.tauth.Tencent
+import com.tencent.tauth.UiError
 import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
 
 /**
  * Created by kec005  on 8/5/24.
@@ -30,6 +30,10 @@ class QQShareUtils private constructor() {
     }
 
     private var tencent: Tencent? = null
+
+    //    private val maxImageSizeInKB: Int = 5 * 1024 //5MB Unit: KB
+    private val maxImageSizeInKB: Int = 500 //5MB Unit: KB
+
 
     fun initTencentQQSdk(applicationContext: Context) {
         Tencent.setIsPermissionGranted(true)
@@ -53,20 +57,31 @@ class QQShareUtils private constructor() {
     }
 
     fun shareNetworkImageToQQ(activity: Activity, imageUrl: String, isShareToQzone: Boolean, listener: IUiListener) {
-        Glide.with(activity.baseContext).asBitmap()
+        Glide.with(activity.baseContext)
+            .asBitmap()
             .load(imageUrl)
             .into(object : CustomTarget<Bitmap?>() {
                 override fun onResourceReady(bitmap: Bitmap, transition: Transition<in Bitmap?>?) {
-                    val shareImageFilePath = saveBitmapToFile(activity.baseContext, bitmap)
-                    println("base---------shareNetworkImageToQQ--------->shareImageFilePath: $shareImageFilePath")
-                    if (isShareToQzone) {
-                        shareImageToQZone(activity, shareImageFilePath, listener)
-                    } else {
-                        shareToQQ(activity, shareImageFilePath, listener)
-                    }
+
+                    CompressImage.compressImageInBackground(activity, bitmap, maxImageSizeInKB, object : CompressImage.CompressionCallback {
+
+                        override fun onCompressionComplete(imageFile: File) {
+                            val imageFilePath = imageFile.absolutePath
+                            if (isShareToQzone) {
+                                shareImageToQZone(activity, imageFilePath, listener)
+                            } else {
+                                shareToQQ(activity, imageFilePath, listener)
+                            }
+                        }
+
+                        override fun onCompressionError() {
+                            listener.onError(UiError(433, "图片压缩失败1", "图片压缩失败2"))
+                        }
+                    })
                 }
 
                 override fun onLoadCleared(placeholder: Drawable?) {
+                    println("base---------shareNetworkImageToQQ--------->errorDrawable: $placeholder")
                 }
             })
     }
@@ -83,13 +98,13 @@ class QQShareUtils private constructor() {
 
     fun shareImageToQZone(activity: Activity, imageFilePath: String, listener: IUiListener) {
         if (tencent == null) return
-        val params = Bundle()
-        params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE, QQShare.SHARE_TO_QQ_TYPE_IMAGE)
-        params.putString(QQShare.SHARE_TO_QQ_APP_NAME, activity.getString(R.string.app_name))
-        params.putString(QQShare.SHARE_TO_QQ_IMAGE_LOCAL_URL, imageFilePath)
-        params.putInt(QQShare.SHARE_TO_QQ_EXT_INT, QQShare.SHARE_TO_QQ_FLAG_QZONE_AUTO_OPEN)
-        println("base---------shareImageToQZone--------->")
-        tencent?.shareToQQ(activity, params, listener)
+        val params = Bundle().apply {
+            putInt(QzoneShare.SHARE_TO_QZONE_KEY_TYPE, PUBLISH_TO_QZONE_TYPE_PUBLISHMOOD)
+            val imgUrlList = ArrayList<String>()
+            imgUrlList.add(imageFilePath)
+            putStringArrayList(QzoneShare.SHARE_TO_QQ_IMAGE_URL, imgUrlList)
+        }
+        tencent?.publishToQzone(activity, params, listener)
     }
 
     /**
@@ -114,27 +129,27 @@ class QQShareUtils private constructor() {
         tencent?.shareToQzone(activity, params, listener)
     }
 
-    fun saveBitmapToFile(context: Context, bitmap: Bitmap): String {
-        val imageName = "share_to_qq_image.jpg"
-//        val directory = File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), BuildConfig.LIBRARY_PACKAGE_NAME + "Images")
-        val directory = File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "share_images")
-
-        if (!directory.exists()) {
-            directory.mkdirs()
-        }
-
-        val file = File(directory, imageName)
-
-        try {
-            val fos = FileOutputStream(file)
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
-            fos.flush()
-            fos.close()
-        } catch (exception: IOException) {
-            exception.printStackTrace()
-        }
-
-        return file.absolutePath
-    }
+//    fun saveBitmapToFile(context: Context, bitmap: Bitmap): String {
+//        val imageName = "share_to_qq_image.jpg"
+////        val directory = File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), BuildConfig.LIBRARY_PACKAGE_NAME + "Images")
+//        val directory = File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "share_images")
+//
+//        if (!directory.exists()) {
+//            directory.mkdirs()
+//        }
+//
+//        val file = File(directory, imageName)
+//
+//        try {
+//            val fos = FileOutputStream(file)
+//            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
+//            fos.flush()
+//            fos.close()
+//        } catch (exception: IOException) {
+//            exception.printStackTrace()
+//        }
+//
+//        return file.absolutePath
+//    }
 
 }

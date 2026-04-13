@@ -4,8 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/shareImageView"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"/>
+
     <Button
         android:id="@+id/qShareImageBtn1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="分享网络图片到QQ空间"/>
+
+    <Button
+        android:id="@+id/qShareImageBtn2"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center"
